@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Эпатаж — пошив экипировки для единоборств и хоккея</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="description" content="Собственное производство экипировки для ММА, муай-тай и хоккея. Шьём серийно и под заказ — ваши цвета, размеры и логотип.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green-dark:#0b2a21;--green:#0f3a2e;--green-line:#1f5240;
+  --gold:#c79a3b;--gold-soft:#d4af37;--bg:#faf9f6;--surface:#ffffff;
+  --text:#1c1c1a;--text-muted:#6b6a64;--on-dark:#f0ede3;--on-dark-soft:#a9b5ae;--border:#e7e4dc;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,sans-serif;color:var(--text);background:var(--bg);line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:'Oswald',sans-serif;font-weight:600;line-height:1.06;letter-spacing:.5px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:3px;font-size:13px;font-weight:600;color:var(--gold)}
+a{color:inherit;text-decoration:none}
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,42,33,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--green-line)}
+.nav__in{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:12px;color:var(--gold-soft);text-decoration:none}
+.brand__name{font-family:'Oswald',sans-serif;font-size:26px;font-weight:700;font-style:italic;letter-spacing:1.5px;color:var(--gold-soft);line-height:1}
+.brand__div{width:1.5px;height:34px;background:var(--gold);opacity:.55}
+.brand__tag{font-family:'Inter',sans-serif;font-size:10.5px;letter-spacing:1.5px;color:var(--on-dark-soft);line-height:1.35;text-transform:uppercase}
+.nav__links{display:flex;gap:26px;align-items:center}
+.nav__links a{color:var(--on-dark);font-size:14px;font-weight:500;transition:color .15s}
+.nav__links a:hover{color:var(--gold)}
+.nav__cta{background:var(--gold);color:var(--green-dark);padding:9px 20px;border-radius:8px;font-weight:600;font-size:14px;transition:background .15s,transform .15s}
+.nav__cta:hover{background:var(--gold-soft);transform:translateY(-1px)}
+.burger{display:none;background:none;border:0;cursor:pointer;flex-direction:column;gap:5px}
+.burger span{width:24px;height:2px;background:var(--on-dark);display:block}
+.hero{position:relative;background:var(--green-dark);color:var(--on-dark);overflow:hidden;padding:110px 0 120px}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(112deg,var(--green-dark) 0%,var(--green-dark) 52%,var(--green) 52%,var(--green) 100%)}
+.hero::after{content:"";position:absolute;top:-10%;bottom:-10%;left:50%;width:2px;background:var(--gold);transform:skewX(-22deg);transform-origin:top;opacity:.7}
+.hero__grid{position:absolute;top:0;right:0;width:46%;height:100%;background:repeating-linear-gradient(58deg,transparent,transparent 22px,rgba(199,154,59,.06) 22px,rgba(199,154,59,.06) 24px);pointer-events:none}
+.hero__in{position:relative;z-index:2;max-width:820px}
+.hero h1{font-size:clamp(34px,5vw,60px);font-weight:700;color:var(--gold-soft);font-style:italic;margin:18px 0 0;text-wrap:balance}
+.hero__lead{font-size:clamp(18px,2.4vw,23px);font-weight:500;color:var(--on-dark);margin:18px 0 14px;max-width:540px}
+.hero__sub{font-size:16px;color:var(--on-dark-soft);max-width:490px;margin-bottom:34px}
+.btn-row{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 30px;border-radius:9px;font-weight:600;font-size:15px;font-family:'Inter',sans-serif;cursor:pointer;border:0;transition:transform .15s,background .15s,border-color .15s,color .15s}
+.btn--gold{background:var(--gold);color:var(--green-dark)}
+.btn--gold:hover{background:var(--gold-soft);transform:translateY(-2px)}
+.btn--ghost{background:transparent;color:var(--on-dark);border:1.5px solid var(--green-line)}
+.btn--ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn .arr{transition:transform .15s}
+.btn:hover .arr{transform:translateX(4px)}
+.stats{background:var(--green);border-top:1px solid var(--green-line)}
+.stats__in{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--green-line)}
+.stat{background:var(--green);padding:26px 24px;text-align:center}
+.stat b{font-family:'Oswald',sans-serif;font-size:34px;font-weight:700;color:var(--gold-soft);display:block;line-height:1}
+.stat span{font-size:13px;color:var(--on-dark-soft);text-transform:uppercase;letter-spacing:1px}
+.section{padding:90px 0}
+.section__head{margin-bottom:46px;max-width:660px}
+.section__head h2{font-size:clamp(30px,4vw,44px);font-weight:700;border-left:5px solid var(--gold);padding-left:18px}
+.section__head p{margin-top:14px;color:var(--text-muted);font-size:17px;padding-left:23px}
+.about__quote{font-family:'Oswald',sans-serif;font-size:clamp(24px,3.2vw,34px);font-weight:500;line-height:1.25;color:var(--green);max-width:760px;margin-bottom:18px}
+.about__quote span{color:var(--gold)}
+.about__text{color:var(--text-muted);font-size:17px;max-width:680px;margin-bottom:46px}
+.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.principle{padding:30px;background:var(--surface);border:1px solid var(--border);border-radius:14px}
+.principle__n{font-family:'Oswald',sans-serif;font-size:38px;font-weight:700;color:var(--gold);line-height:1}
+.principle h3{font-size:20px;font-weight:600;margin:14px 0 8px}
+.principle p{font-size:14.5px;color:var(--text-muted)}
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cat{position:relative;overflow:hidden;background:var(--green);color:var(--on-dark);border-radius:16px;padding:30px;min-height:230px;display:flex;flex-direction:column;justify-content:flex-end;transition:transform .2s}
+.cat:hover{transform:translateY(-4px)}
+.cat::after{content:"";position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(199,154,59,.22),transparent 70%)}
+.cat__ico{position:absolute;top:26px;left:30px;font-size:30px}
+.cat h3{font-size:26px;font-weight:600;position:relative}
+.cat p{font-size:14px;color:var(--on-dark-soft);margin-top:6px;position:relative}
+.cat__link{margin-top:14px;color:var(--gold-soft);font-weight:600;font-size:14px;position:relative}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.step{padding:28px 22px;background:var(--surface);border:1px solid var(--border);border-radius:14px}
+.step__n{font-family:'Oswald',sans-serif;font-size:42px;font-weight:700;color:var(--gold);line-height:1}
+.step h3{font-size:18px;font-weight:600;margin:10px 0 6px}
+.step p{font-size:14px;color:var(--text-muted)}
+.custom__box{background:var(--green);color:var(--on-dark);border-radius:20px;padding:54px 50px;position:relative;overflow:hidden;display:grid;grid-template-columns:1.2fr 1fr;gap:46px;align-items:center}
+.custom__box::before{content:"";position:absolute;top:-10%;bottom:-10%;left:58%;width:2px;background:var(--gold);transform:skewX(-22deg);opacity:.5}
+.custom__txt h2{font-size:clamp(28px,3.6vw,40px);font-weight:700;color:var(--gold-soft);margin-bottom:16px}
+.custom__txt p{color:var(--on-dark-soft);font-size:16px;margin-bottom:14px}
+.custom__list{list-style:none;margin:18px 0 26px}
+.custom__list li{padding:7px 0 7px 28px;position:relative;font-size:15px;color:var(--on-dark)}
+.custom__list li::before{content:"✂";position:absolute;left:0;color:var(--gold)}
+.custom__side{position:relative;z-index:1}
+.custom__card{background:rgba(255,255,255,.04);border:1px solid var(--green-line);border-radius:14px;padding:26px;text-align:center}
+.custom__card .eyebrow{display:block;margin-bottom:8px}
+.custom__card b{font-family:'Oswald',sans-serif;font-size:22px;color:var(--on-dark);font-weight:600;display:block;line-height:1.2;margin-bottom:14px}
+.custom__card p{font-size:14px;color:var(--on-dark-soft);margin-bottom:18px}
+.faq{max-width:840px}
+.faq__item{border-bottom:1px solid var(--border)}
+.faq__q{width:100%;background:none;border:0;cursor:pointer;text-align:left;padding:22px 40px 22px 0;font-size:18px;font-weight:600;color:var(--text);font-family:'Inter',sans-serif;position:relative;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq__q::after{content:"+";font-size:26px;color:var(--gold);font-weight:400;transition:transform .2s;line-height:1}
+.faq__item.open .faq__q::after{transform:rotate(45deg)}
+.faq__a{max-height:0;overflow:hidden;transition:max-height .28s ease}
+.faq__a p{padding:0 0 22px;color:var(--text-muted);font-size:15.5px;max-width:760px}
+.contact{background:var(--green-dark);color:var(--on-dark);position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;top:0;right:0;width:240px;height:100%;background:repeating-linear-gradient(58deg,transparent,transparent 22px,rgba(199,154,59,.05) 22px,rgba(199,154,59,.05) 24px);pointer-events:none}
+.contact__grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;position:relative;z-index:1}
+.contact__l h2{font-size:clamp(30px,4vw,44px);font-weight:700;color:var(--gold-soft);margin:14px 0 16px}
+.contact__l>p{color:var(--on-dark-soft);font-size:16px;max-width:380px;margin-bottom:32px}
+.contact__direct{background:rgba(255,255,255,.03);border:1px solid var(--green-line);border-radius:16px;padding:26px}
+.contact__direct h3{font-family:'Oswald',sans-serif;font-size:18px;color:var(--on-dark);margin-bottom:18px;font-weight:600;letter-spacing:.5px}
+.contact__row{display:flex;align-items:center;gap:13px;margin-bottom:13px;color:var(--on-dark);font-size:15px}
+.contact__row i{flex-shrink:0;width:38px;height:38px;border-radius:50%;border:1px solid var(--green-line);display:flex;align-items:center;justify-content:center;color:var(--gold);font-style:normal}
+.contact__soc{display:flex;gap:10px;margin-top:18px;padding-top:18px;border-top:1px solid var(--green-line)}
+.contact__soc a{width:40px;height:40px;border-radius:50%;border:1px solid var(--green-line);display:flex;align-items:center;justify-content:center;color:var(--on-dark);font-size:16px;transition:border-color .15s,color .15s}
+.contact__soc a:hover{border-color:var(--gold);color:var(--gold)}
+.form{background:rgba(255,255,255,.03);border:1px solid var(--green-line);border-radius:16px;padding:30px}
+.field{margin-bottom:18px}
+.field label{display:block;font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--on-dark-soft);margin-bottom:8px}
+.field label span{color:var(--gold)}
+.field input,.field select,.field textarea{width:100%;background:rgba(0,0,0,.2);border:1px solid var(--green-line);border-radius:10px;padding:13px 15px;color:var(--on-dark);font-family:'Inter',sans-serif;font-size:15px;transition:border-color .15s}
+.field input::placeholder,.field textarea::placeholder{color:#6f7c75}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold)}
+.field select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23c79a3b' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.field textarea{resize:vertical;min-height:96px}
+.consent{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--on-dark-soft);margin-bottom:20px}
+.consent input{margin-top:3px}
+.consent a{color:var(--gold);text-decoration:underline}
+.form .btn{width:100%;justify-content:center}
+.form__ok{display:none;text-align:center;padding:40px 20px;background:rgba(255,255,255,.03);border:1px solid var(--green-line);border-radius:16px}
+.form__ok.show{display:block}
+.form__ok h3{font-family:'Oswald',sans-serif;color:var(--gold-soft);font-size:24px;margin-bottom:10px}
+.form__ok p{color:var(--on-dark-soft);font-size:15px}
+.foot{background:var(--green-dark);color:var(--on-dark-soft);padding:54px 0 30px;border-top:1px solid var(--green-line)}
+.foot__grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:36px}
+.foot__brand b{font-family:'Oswald',sans-serif;font-size:24px;font-style:italic;color:var(--gold-soft);font-weight:700}
+.foot__brand p{margin-top:12px;font-size:14px;max-width:300px}
+.foot h4{font-family:'Oswald',sans-serif;color:var(--on-dark);font-size:15px;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
+.foot a{display:block;font-size:14px;margin-bottom:9px;transition:color .15s}
+.foot a:hover{color:var(--gold)}
+.foot__bot{border-top:1px solid var(--green-line);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media(max-width:880px){
+  .nav__in{position:relative}
+  .nav__links{
+    display:none;position:absolute;top:68px;left:0;right:0;
+    flex-direction:column;align-items:stretch;gap:0;
+    background:var(--green-dark);border-top:1px solid var(--green-line);
+    border-bottom:1px solid var(--green-line);padding:8px 0;
+    box-shadow:0 12px 30px rgba(0,0,0,.4);
+  }
+  .nav__links.open{display:flex}
+  .nav__links a{padding:14px 24px;font-size:16px}
+  .nav__links .nav__cta{margin:6px 24px 0;text-align:center;border-radius:8px}
+  .burger{display:flex}
+  .burger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger.active span:nth-child(2){opacity:0}
+  .burger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .hero::before{background:var(--green)}.hero::after,.hero__grid{display:none}
+  .stats__in{grid-template-columns:1fr 1fr}.principles{grid-template-columns:1fr}
+  .cats{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}
+  .custom__box{grid-template-columns:1fr;gap:30px;padding:40px 26px}.custom__box::before{display:none}
+  .contact__grid{grid-template-columns:1fr;gap:34px}.foot__grid{grid-template-columns:1fr}
+}
+@media(max-width:520px){.steps{grid-template-columns:1fr}.section{padding:64px 0}}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.faq__a{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="#top">
+      <span class="brand__name">Эпатаж</span>
+      <span class="brand__div"></span>
+      <span class="brand__tag">Экипировка<br>для единоборств</span>
+    </a>
+    <nav class="nav__links" id="navLinks">
+      <a href="#about">О нас</a>
+      <a href="#cats">Направления</a>
+      <a href="#custom">Пошив на заказ</a>
+      <a href="#faq">Вопросы</a>
+      <!-- КНОПКА КАТАЛОГ: когда будет домен магазина, поменять href на https://shop.epatazh.ru -->
+      <a href="#cats" class="nav__cta">Каталог</a>
+      <a href="#contact" class="nav__cta" style="background:transparent;color:var(--on-dark);border:1.5px solid var(--green-line)">Заявка</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__grid"></div>
+  <div class="wrap hero__in">
+    <span class="eyebrow">Собственное производство · Пошив под заказ</span>
+    <h1>Шьём экипировку для тех, кто тренируется всерьёз</h1>
+    <p class="hero__lead">Своя фабрика. Форма и экипировка для ММА, муай-тай и хоккея — серийно и под заказ.</p>
+    <p class="hero__sub">Не перепродаём — производим сами. Сошьём под ваши размеры, цвета и с вашим логотипом.</p>
+    <div class="btn-row">
+      <a href="#contact" class="btn btn--gold">Оставить заявку <span class="arr">→</span></a>
+      <!-- КНОПКА КАТАЛОГ: когда будет домен магазина, поменять href на https://shop.epatazh.ru -->
+      <a href="#cats" class="btn btn--ghost">Перейти в каталог</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap"><div class="stats__in">
+    <div class="stat"><b>100%</b><span>свой пошив</span></div>
+    <div class="stat"><b>3</b><span>вида спорта</span></div>
+    <div class="stat"><b>Любой</b><span>размер и цвет</span></div>
+    <div class="stat"><b>14</b><span>дней на возврат</span></div>
+  </div></div>
+</div>
+
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section__head reveal"><span class="eyebrow">О нас</span></div>
+    <p class="about__quote reveal">Экипировка — это не просто форма. Это то, в чём вы выходите <span>на ринг, татами и лёд.</span></p>
+    <p class="about__text reveal">Мы шьём спортивную экипировку на собственном производстве. Контролируем каждый этап — от выбора ткани до последней строчки. Поэтому отвечаем за качество и можем сделать форму точно под вас.</p>
+    <div class="principles">
+      <div class="principle reveal"><div class="principle__n">01</div><h3>Свои материалы</h3><p>Работаем с прочными тканями, которые держат форму и выдерживают нагрузки.</p></div>
+      <div class="principle reveal"><div class="principle__n">02</div><h3>Свой пошив</h3><p>Шьём сами на фабрике — без посредников и наценок за чужой бренд.</p></div>
+      <div class="principle reveal"><div class="principle__n">03</div><h3>Под ваш запрос</h3><p>Серийная модель или индивидуальный пошив под команду — сделаем и то, и другое.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="cats" style="padding-top:0">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <span class="eyebrow">Направления</span>
+      <h2>Выбери свой вид спорта</h2>
+      <p>Экипировка под конкретную дисциплину — ничего лишнего, всё по делу.</p>
+    </div>
+    <div class="cats">
+      <a class="cat reveal" href="#contact"><span class="cat__ico">🥊</span><h3>ММА</h3><p>Рашгарды, футболки, шорты</p><span class="cat__link">Подробнее →</span></a>
+      <a class="cat reveal" href="#contact"><span class="cat__ico">🔥</span><h3>Муай-тай</h3><p>Майки, шорты, форма для зала</p><span class="cat__link">Подробнее →</span></a>
+      <a class="cat reveal" href="#contact"><span class="cat__ico">🏒</span><h3>Хоккей</h3><p>Джерси, поло, тренировочная форма</p><span class="cat__link">Подробнее →</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="how" style="padding-top:0">
+  <div class="wrap">
+    <div class="section__head reveal"><span class="eyebrow">Как заказать</span><h2>Четыре шага до вашей формы</h2></div>
+    <div class="steps">
+      <div class="step reveal"><div class="step__n">01</div><h3>Оставляете заявку</h3><p>Пишете нам или заполняете форму — расскажите, что нужно.</p></div>
+      <div class="step reveal"><div class="step__n">02</div><h3>Уточняем детали</h3><p>Согласуем модель, размеры, цвета, логотип и сроки.</p></div>
+      <div class="step reveal"><div class="step__n">03</div><h3>Шьём</h3><p>Запускаем пошив на собственном производстве.</p></div>
+      <div class="step reveal"><div class="step__n">04</div><h3>Отправляем</h3><p>Доставляем готовый заказ по всей России.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="custom" style="padding-top:0">
+  <div class="wrap">
+    <div class="custom__box reveal">
+      <div class="custom__txt">
+        <span class="eyebrow">Пошив под заказ</span>
+        <h2>Сошьём под вашу команду</h2>
+        <p>Нужна форма для клуба, секции или команды? Произведём партию в вашем стиле — от единичного комплекта до крупного заказа.</p>
+        <ul class="custom__list">
+          <li>Ваши цвета и фирменный стиль</li>
+          <li>Логотип и номера на форме</li>
+          <li>Индивидуальные размеры</li>
+          <li>Опт для команд и секций</li>
+        </ul>
+        <div class="btn-row"><a href="#contact" class="btn btn--gold">Обсудить заказ <span class="arr">→</span></a></div>
+      </div>
+      <div class="custom__side">
+        <div class="custom__card">
+          <span class="eyebrow">Наша фабрика</span>
+          <b>Приезжайте<br>познакомиться</b>
+          <p>Покажем производство, ткани и образцы. Поможем определиться с заказом на месте.</p>
+          <a href="https://go.2gis.com/iwAL8" target="_blank" rel="noopener" class="btn btn--ghost" style="width:100%;justify-content:center">Как нас найти</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="section__head reveal"><span class="eyebrow">Вопросы</span><h2>Частые вопросы</h2></div>
+    <div class="faq reveal">
+      <div class="faq__item">
+        <button class="faq__q">Как сделать заказ?</button>
+        <div class="faq__a"><p>Оставьте заявку через форму внизу страницы или напишите нам в мессенджер. Мы свяжемся, уточним детали — модель, размеры, цвета — и подтвердим заказ.</p></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q">Можно заказать форму под команду?</button>
+        <div class="faq__a"><p>Да. Это наша основная специализация — шьём форму под клубы, секции и команды: ваши цвета, логотип, номера и индивидуальные размеры. От одного комплекта до крупной партии.</p></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q">Сколько занимает пошив?</button>
+        <div class="faq__a"><p>Серийные модели из наличия отправляем сразу. Срок индивидуального пошива зависит от объёма и сложности — точные сроки назовём после согласования деталей.</p></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q">Доставляете в другие города?</button>
+        <div class="faq__a"><p>Да, отправляем по всей России транспортными компаниями. Способ и стоимость доставки рассчитываем при оформлении заказа.</p></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q">Можно вернуть, если не подошло?</button>
+        <div class="faq__a"><p>Серийный товар можно вернуть в течение 14 дней, если он не подошёл. На изделия индивидуального пошива условия возврата обговариваются отдельно при заказе.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <div class="wrap">
+    <div class="contact__grid">
+      <div class="contact__l reveal">
+        <span class="eyebrow">Заявка</span>
+        <h2>Расскажите о заказе</h2>
+        <p>Что нужно сшить, для какого вида спорта, сколько комплектов — а мы подберём решение и назовём сроки.</p>
+        <div class="contact__direct">
+          <h3>Связаться напрямую</h3>
+          <div class="contact__row"><i>☎</i><span>+7 (000) 000-00-00</span></div>
+          <div class="contact__row"><i>✉</i><span>info@epatajextra.ru</span></div>
+          <div class="contact__row"><i>📍</i><a href="https://go.2gis.com/iwAL8" target="_blank" rel="noopener">Наша фабрика на карте →</a></div>
+          <div class="contact__soc">
+            <a href="https://vk.com/epataj68" aria-label="VK">VK</a>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <form class="form" id="leadForm" action="/api/lead" method="POST" novalidate>
+          <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
+          <div class="field"><label>Имя <span>*</span></label><input type="text" name="name" placeholder="Ваше имя" required></div>
+          <div class="field"><label>Телефон <span>*</span></label><input type="tel" name="phone" inputmode="tel" placeholder="+7 (___) ___-__-__" required></div>
+          <div class="field"><label>Что нужно <span>*</span></label>
+            <select name="order_type" required>
+              <option value="">Выберите тип заказа</option>
+              <option>Готовая модель из каталога</option>
+              <option>Индивидуальный пошив</option>
+              <option>Форма для команды / клуба</option>
+              <option>Оптовый заказ</option>
+              <option>Другое</option>
+            </select>
+          </div>
+          <div class="field"><label>Комментарий</label><textarea name="comment" placeholder="Вид спорта, количество, цвета, пожелания…"></textarea></div>
+          <label class="consent"><input type="checkbox" id="consentCheck" required><span>Согласен с <a href="privacy.html" target="_blank">политикой конфиденциальности</a></span></label>
+          <button type="submit" class="btn btn--gold">Отправить заявку <span class="arr">→</span></button>
+        </form>
+        <div class="form__ok" id="formOk">
+          <h3>Заявка принята</h3>
+          <p>Мы свяжемся с вами в ближайшее время и обсудим детали заказа.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div class="foot__brand">
+        <b>Эпатаж</b>
+        <p>Собственное производство экипировки для единоборств и хоккея. Шьём серийно и под заказ.</p>
+      </div>
+      <div>
+        <h4>Навигация</h4>
+        <a href="#about">О нас</a><a href="#cats">Направления</a><a href="#custom">Пошив на заказ</a><a href="#faq">Вопросы</a>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <a href="#">info@epatajextra.ru</a><a href="#">+7 (000) 000-00-00</a><a href="https://go.2gis.com/iwAL8" target="_blank" rel="noopener">Мы на карте 2ГИС →</a>
+      </div>
+    </div>
+    <div class="foot__bot">
+      <span>© 2026 Эпатаж. Все права защищены.</span>
+      <span>Создано с заботой о бойцах</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// мобильное меню (бургер)
+const burger=document.getElementById('burger');
+const navLinks=document.getElementById('navLinks');
+burger.addEventListener('click',()=>{
+  const open=navLinks.classList.toggle('open');
+  burger.classList.toggle('active',open);
+  burger.setAttribute('aria-expanded',open?'true':'false');
+});
+// закрываем меню при клике на ссылку
+navLinks.querySelectorAll('a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    navLinks.classList.remove('open');
+    burger.classList.remove('active');
+    burger.setAttribute('aria-expanded','false');
+  });
+});
+
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.querySelectorAll('.faq__q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const item=q.parentElement,a=item.querySelector('.faq__a'),open=item.classList.contains('open');
+    document.querySelectorAll('.faq__item.open').forEach(o=>{o.classList.remove('open');o.querySelector('.faq__a').style.maxHeight=null});
+    if(!open){item.classList.add('open');a.style.maxHeight=a.scrollHeight+'px'}
+  });
+});
+const leadForm=document.getElementById('leadForm');
+leadForm.addEventListener('submit',async function(e){
+  e.preventDefault();
+  if(!this.checkValidity()){this.reportValidity();return}
+  // проверка телефона: должно быть 10-15 цифр (без учёта пробелов, скобок, дефисов)
+  const digits=this.phone.value.replace(/\D/g,'');
+  if(digits.length<10 || digits.length>15){
+    this.phone.setCustomValidity('Введите корректный номер телефона');
+    this.reportValidity();
+    this.phone.setCustomValidity('');
+    return;
+  }
+  const btn=this.querySelector('button[type=submit]');
+  const old=btn.innerHTML;
+  btn.disabled=true;btn.innerHTML='Отправляем…';
+  const data={
+    name:this.name.value.trim(),
+    phone:this.phone.value.trim(),
+    order_type:this.order_type.value,
+    comment:this.comment.value.trim(),
+    website:this.website.value
+  };
+  try{
+    const res=await fetch('/api/lead',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(data)
+    });
+    if(res.ok){
+      this.style.display='none';
+      document.getElementById('formOk').classList.add('show');
+    }else{
+      throw new Error('fail');
+    }
+  }catch(err){
+    btn.disabled=false;btn.innerHTML=old;
+    alert('Не удалось отправить заявку. Попробуйте позже или свяжитесь с нами напрямую по телефону.');
+  }
+});
+</script>
+</body>
+</html>
