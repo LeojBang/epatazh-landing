@@ -2,7 +2,7 @@
 Эпатаж — мини-приложение лендинга.
 
 Делает две вещи:
-  1. Отдаёт статику (сам лендинг: index.html, privacy.html, favicon.svg).
+  1. Отдаёт статику (сам лендинг: index.html, index.html, favicon.svg).
   2. Принимает заявки с формы (POST /api/lead) и шлёт их на email через SMTP.
 
 Без базы данных и без регистрации — заявки приходят на почту.
@@ -183,7 +183,7 @@ async def health():
     return {"status": "ok"}
 
 
-# отдаём статику: главная — index.html, плюс privacy.html, favicon и т.д.
+# отдаём статику: главная — index.html, плюс index.html, favicon и т.д.
 @app.get("/")
 async def index():
     return FileResponse(STATIC_DIR / "index.html")
