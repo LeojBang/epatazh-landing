@@ -23,7 +23,7 @@ from dotenv import load_dotenv
 load_dotenv()  # читает .env рядом с app.py, если есть
 
 from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse, FileResponse, HTMLResponse
+from fastapi.responses import JSONResponse, FileResponse, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.exceptions import HTTPException
 from pydantic import BaseModel, field_validator
@@ -187,6 +187,38 @@ async def create_lead(lead: Lead, request: Request):
 @app.get("/health")
 async def health():
     return {"status": "ok"}
+
+
+@app.get("/robots.txt")
+async def robots(request: Request) -> Response:
+    base = str(request.base_url).rstrip("/")
+    content = (
+        "User-agent: *\n"
+        "Allow: /\n"
+        "Disallow: /api/\n"
+        f"\nSitemap: {base}/sitemap.xml\n"
+    )
+    return Response(content=content, media_type="text/plain")
+
+
+@app.get("/sitemap.xml")
+async def sitemap(request: Request) -> Response:
+    base = str(request.base_url).rstrip("/")
+    urls = [
+        (f"{base}/", "1.0"),
+        (f"{base}/privacy/", "0.3"),
+    ]
+    items = "\n".join(
+        f"  <url><loc>{loc}</loc><priority>{pr}</priority></url>"
+        for loc, pr in urls
+    )
+    xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f"{items}\n"
+        "</urlset>\n"
+    )
+    return Response(content=xml, media_type="application/xml")
 
 
 # отдаём статику: главная — index.html, плюс index.html, favicon и т.д.
