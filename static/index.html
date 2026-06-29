@@ -72,7 +72,10 @@
         .principle__n{font-family:'Oswald',sans-serif;font-size:38px;font-weight:700;color:var(--gold);line-height:1}
         .principle h3{font-size:20px;font-weight:600;margin:14px 0 8px}
         .principle p{font-size:14.5px;color:var(--text-muted)}
-        .cats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+        .cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+        a[href^="tel:"],a[href^="mailto:"]{color:inherit;text-decoration:none}
+        a.foot__contact-item{text-decoration:none;color:inherit;display:flex}
+        a.foot__contact-item:hover .foot__contact-icon{color:var(--gold,#c79a3b)}
         .cat{position:relative;overflow:hidden;background:var(--green);color:var(--on-dark);border-radius:16px;padding:30px;min-height:230px;display:flex;flex-direction:column;justify-content:flex-end;transition:transform .2s}
         .cat:hover{transform:translateY(-4px)}
         .cat::after{content:"";position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(199,154,59,.22),transparent 70%)}
@@ -163,18 +166,6 @@
             border-bottom:1px solid var(--green-line);padding:8px 0;
             box-shadow:0 12px 30px rgba(0,0,0,.4);
           }
-          a[href^="tel:"], a[href^="mailto:"] {
-            color: inherit;
-            text-decoration: none;
-        }
-        a.foot__contact-item {
-        text-decoration: none;
-        color: inherit;
-        display: flex;
-        }
-        a.foot__contact-item:hover .foot__contact-icon {
-            color: var(--gold, #c79a3b);
-        }
           .nav__links.open{display:flex}
           .nav__links a{padding:14px 24px;font-size:16px}
           .nav__links .nav__cta{margin:6px 24px 0;text-align:center;border-radius:8px}
