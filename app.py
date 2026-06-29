@@ -23,8 +23,9 @@ from dotenv import load_dotenv
 load_dotenv()  # читает .env рядом с app.py, если есть
 
 from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse, FileResponse
+from fastapi.responses import JSONResponse, FileResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
+from fastapi.exceptions import HTTPException
 from pydantic import BaseModel, field_validator
 
 # --- настройки из окружения -------------------------------------------------
@@ -145,6 +146,11 @@ def send_email(lead: Lead) -> None:
 # --- приложение -------------------------------------------------------------
 
 app = FastAPI(title="Эпатаж — лендинг", docs_url=None, redoc_url=None)
+
+
+@app.exception_handler(404)
+async def not_found_handler(request: Request, exc: HTTPException):
+    return FileResponse(STATIC_DIR / "404.html", status_code=404)
 
 
 @app.post("/api/lead")
