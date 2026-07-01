@@ -197,8 +197,7 @@
             <a href="#cats">Направления</a>
             <a href="#custom">Пошив на заказ</a>
             <a href="#faq">Вопросы</a>
-            <!-- КНОПКА КАТАЛОГ: когда будет домен магазина, поменять href на https://shop.epatazh.ru -->
-            <a href="#cats" class="nav__cta">Каталог</a>
+            <a href="https://shop.epatajextra.ru" class="nav__cta">Каталог</a>
             <a href="#contact" class="nav__cta"
                style="background:transparent;color:var(--on-dark);border:1.5px solid var(--green-line)">Заявка</a>
         </nav>
@@ -216,8 +215,7 @@
         <p class="hero__sub">Не перепродаём — производим сами. Сошьём под ваши размеры, цвета и с вашим логотипом.</p>
         <div class="btn-row">
             <a href="#contact" class="btn btn--gold">Оставить заявку <span class="arr">→</span></a>
-            <!-- КНОПКА КАТАЛОГ: когда будет домен магазина, поменять href на https://shop.epatazh.ru -->
-            <a href="#cats" class="btn btn--ghost">Перейти в каталог</a>
+            <a href="https://shop.epatajextra.ru" class="btn btn--ghost">Перейти в каталог</a>
         </div>
     </div>
 </section>
@@ -266,13 +264,13 @@
             <p>Экипировка под конкретную дисциплину — ничего лишнего, всё по делу.</p>
         </div>
         <div class="cats">
-            <a class="cat reveal" href="#contact"><span class="cat__ico">🥊</span>
+            <a class="cat reveal" href="https://shop.epatajextra.ru/catalog"><span class="cat__ico">🥊</span>
                 <h3>ММА</h3>
                 <p>Рашгарды, футболки, шорты</p><span class="cat__link">Подробнее →</span></a>
-            <a class="cat reveal" href="#contact"><span class="cat__ico">🔥</span>
+            <a class="cat reveal" href="https://shop.epatajextra.ru/catalog"><span class="cat__ico">🔥</span>
                 <h3>Муай-тай</h3>
                 <p>Майки, шорты, форма для зала</p><span class="cat__link">Подробнее →</span></a>
-            <a class="cat reveal" href="#contact"><span class="cat__ico">🏒</span>
+            <a class="cat reveal" href="https://shop.epatajextra.ru/catalog"><span class="cat__ico">🏒</span>
                 <h3>Хоккей</h3>
                 <p>Джерси, поло, тренировочная форма</p><span class="cat__link">Подробнее →</span></a>
         </div>
@@ -411,7 +409,7 @@
                                                                            placeholder="Вид спорта, количество, цвета, пожелания…"></textarea>
                     </div>
                     <label class="consent"><input type="checkbox" id="consentCheck" required><span>Согласен с <a
-                            href="/privacy/">Политика конфиденциальности</a></span></label>
+                            href="/privacy.html">Политикой конфиденциальности</a></span></label>
                     <button type="submit" class="btn btn--gold">Отправить заявку <span class="arr">→</span></button>
                 </form>
                 <div class="form__ok" id="formOk">
@@ -462,9 +460,6 @@
                 <h4 style="margin-top:1.4rem">Мы в соцсетях</h4>
                 <div class="foot__social">
                     <a href="https://vk.com/epataj68" aria-label="ВКонтакте"><i class="ti ti-brand-vk"></i></a>
-                    <!--          <a href="#" aria-label="Telegram"><i class="ti ti-brand-telegram"></i></a>-->
-                    <!--          <a href="#" aria-label="YouTube"><i class="ti ti-brand-youtube"></i></a>-->
-                    <!--          <a href="#" aria-label="WhatsApp"><i class="ti ti-brand-whatsapp"></i></a>-->
                 </div>
             </div>
         </div>
@@ -475,7 +470,6 @@
 </footer>
 
 <script>
-    // мобильное меню (бургер)
     const burger=document.getElementById('burger');
     const navLinks=document.getElementById('navLinks');
     burger.addEventListener('click',()=>{
@@ -483,7 +477,6 @@
       burger.classList.toggle('active',open);
       burger.setAttribute('aria-expanded',open?'true':'false');
     });
-    // закрываем меню при клике на ссылку
     navLinks.querySelectorAll('a').forEach(a=>{
       a.addEventListener('click',()=>{
         navLinks.classList.remove('open');
@@ -505,7 +498,6 @@
     leadForm.addEventListener('submit',async function(e){
       e.preventDefault();
       if(!this.checkValidity()){this.reportValidity();return}
-      // проверка телефона: должно быть 10-15 цифр (без учёта пробелов, скобок, дефисов)
       const digits=this.phone.value.replace(/\D/g,'');
       if(digits.length<10 || digits.length>15){
         this.phone.setCustomValidity('Введите корректный номер телефона');
