@@ -159,7 +159,13 @@ async def create_lead(lead: Lead, request: Request):
         log.info("honeypot сработал, заявка отброшена")
         return JSONResponse({"ok": True})
 
-    ip = request.client.host if request.client else "unknown"
+    # За nginx настоящий IP — в конце X-Forwarded-For (его дописывает наш прокси).
+    # Первый элемент подделывается клиентом, поэтому берём последний.
+    fwd = request.headers.get("X-Forwarded-For")
+    if fwd:
+        ip = fwd.split(",")[-1].strip()
+    else:
+        ip = request.client.host if request.client else "unknown"
     if _too_many(ip):
         log.warning("rate limit для %s", ip)
         return JSONResponse(

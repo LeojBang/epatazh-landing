@@ -62,7 +62,41 @@ epatazh-landing/
 4. nginx проксирует домен (epatazh.ru) на этот порт.
 5. certbot выдаёт HTTPS-сертификат.
 
-Подробные команды — отдельно, при деплое.
+### Пример конфига nginx
+
+```nginx
+server {
+    listen 443 ssl;
+    server_name epatazh.ru;
+
+    # SSL — certbot пропишет эти строки сам
+    # ssl_certificate     /etc/letsencrypt/live/epatazh.ru/fullchain.pem;
+    # ssl_certificate_key /etc/letsencrypt/live/epatazh.ru/privkey.pem;
+
+    # --- Заголовки безопасности ---
+    # HSTS включай только когда HTTPS уже работает (после certbot)!
+    add_header Strict-Transport-Security "max-age=63072000; includeSubDomains" always;
+    add_header X-Frame-Options "DENY" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    add_header Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; frame-ancestors 'none'" always;
+
+    location / {
+        proxy_pass http://127.0.0.1:8001;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        # Нужно, чтобы приложение видело настоящий IP клиента (rate-limit заявок)
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+После правки конфига проверь синтаксис и перезапусти nginx:
+
+```bash
+sudo nginx -t && sudo systemctl reload nginx
+```
 
 ## Эндпоинты
 
